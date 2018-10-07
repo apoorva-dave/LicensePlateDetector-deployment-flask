@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>License Plate Detector</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet"> -->
+    <nav class="navbar navbar-inverse" style="background-color: black;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/" style="color: burlywood;">License Plate Detector</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/description">Description</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Image and text -->
+
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Plate Detection Method</h3>
+      <img src="static/images/flowchart.png" style="margin-top: 80px; margin-left: 120px; margin-bottom: 50px">
+  
+      <p>The approach used to segment the images is Connected Component Analysis. Connected regions wil imply that all the connected pixels belong to the same object. A pixel is said to be connected to another if they both have the same value and are adjacent to each other. </p>
+
+      <p>Car Image -> Grayscale Image -> Binary Image -> Applying CCA to get connected regions -> Detect license plate out of all connected regions (Assumptions made : width of the license plate region to the full image ranges between 15% and 40% and height of the license plate region to the full image is between 8% & 20%) </p>
+
+      <p>Output of first step is a license plate image detected in a car image. This is provided as input to step2 and CCA is applied on this image to bound the characters in plate.Each character identified is appended into a list.
+
+      Model is trained using SVC (4 cross fold validation) with dataset present in directory train20X20. The model is saved as finalized_model.sav which is then loaded to predict each character.
+
+      Once the characters of plate is obtained and model is trained, the model is loaded in order to predict each character.</p>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/main.js') }}"></script>
+  </body>
+</html>

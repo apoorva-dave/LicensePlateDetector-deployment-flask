@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Model as a Flask API</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">License Plate Detector</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/description">Description</a></li>
+        </ul>
+      </div>
+    </nav>
+  </head>
+  <body>
+    <img src="/img/{{ label }}" alt = "">
+    <form action="/segment_characters" method="post" enctype="multipart/form-data">
+      <input type="submit" class="btn btn-danger btn-lg" style = "margin-left: 550px;" value="Segment characters">
+    </form>
+    
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>License Plate Detector</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet"> -->
+    <nav class="navbar navbar-inverse" style="background-color: black;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/" style="color: burlywood;">License Plate Detector</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/description">Description</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Image and text -->
+
+    <style>
+      body {
+        background-image: url({{ url_for('static', filename='images/background.jpg') }})
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <form action="/detect_plate" method="post" enctype="multipart/form-data">
+      <div class="form-group text-center" style="margin-top: 200px;">
+        <table style="margin: auto;">
+          <tr>
+            <td><label for="upload" id="upload-label" style="margin-right: 10px;height: 32px;"><div class="btn btn-danger">Choose a car image</div></label></td>
+            <td><p 
+              id="filename" 
+              style="display:none; width: 200px;margin: 0px auto;padding: 5px;border: 1px solid rgb(202, 202, 202);border-radius: 5px; color : white" 
+              class="margin-auto"></p></td>
+          </tr>
+        </table>
+        <input type="file" style = "visibility: hidden;" id="upload" name="image" value="Upload">
+        <button type="submit" class="btn btn-danger">Detect License Plate</button>     
+      </div>
+    </form>  
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/main.js') }}"></script>
+  </body>
+</html>
