@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')
 import flask
 from flask import Flask, request, render_template, session
 from sklearn.externals import joblib
@@ -7,10 +9,9 @@ from flask import send_from_directory
 
 from skimage.io import imread
 from skimage.filters import threshold_otsu
-import matplotlib.pyplot as plt
 from skimage import measure
 from skimage.measure import regionprops
-import matplotlib
+
 import pickle
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
@@ -30,7 +31,7 @@ app.secret_key = 'sdkjfhsjkdfhskjdfhkjshdfkjshdf'
 @app.route("/")
 @app.route("/index")
 def index():
-	session['username'] = "Apoorva Dave!"
+	session['username'] = "Hey there!"
 	return flask.render_template('index.html')
 
 @app.route("/description")
@@ -159,7 +160,9 @@ def segmentCharacters():
 		labelled_plate = measure.label(license_plate)
 
 		fig, ax1 = plt.subplots(1)
+
 		ax1.imshow(license_plate, cmap="gray")
+
 		character_dimensions = (0.35*license_plate.shape[0], 0.60*license_plate.shape[0], 0.05*license_plate.shape[1], 0.15*license_plate.shape[1])
 		min_height, max_height, min_width, max_width = character_dimensions
 
